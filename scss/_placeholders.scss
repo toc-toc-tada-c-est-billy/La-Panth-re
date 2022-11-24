@@ -28,10 +28,17 @@
 %flex-column {
     display: flex;
     flex-direction: column;
+    align-items: center;
 }
 
 %flex-around {
+    display: flex;
     justify-content: space-around;
+}
+
+%flex-between {
+    display: flex;
+    justify-content: space-between;
 }
 
 %padding-inline {
@@ -39,8 +46,13 @@
 }
 
 %padding-vertical {
-    padding-top: 30px;
-    padding-bottom: 30px;
+    padding-top: 100px;
+    padding-bottom: 100px;
+}
+
+%padding-vertical--modifier {
+    padding-top: 50px;
+    padding-bottom: 50px;
 }
 
 %radius-main {

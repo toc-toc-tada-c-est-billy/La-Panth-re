@@ -1,3 +1,169 @@
 @import './_variables';
 @import './_mixins';
 @import './_placeholders';
+
+* {
+    padding-inline-start: unset;
+    text-decoration: none;
+    list-style: none;
+    font-family: 'Helvetica';
+    margin: unset;
+}
+
+a {
+    color: inherit;
+}
+
+html {
+    scroll-behavior: smooth;
+    margin: 0 auto;
+}
+
+@media screen and (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+        // smooth scroll using in-pages links
+    }
+}
+
+.header {
+    display: flex;
+    @extend %flex-around;
+    align-items: center;
+    height: 100px;
+    background-color: white;
+
+    &__logo {
+        height: 40px;
+    }
+}
+
+.heading {
+    position: relative;
+    @extend %flex-center;
+    @extend %padding-vertical;
+    background-image: url(../images/texture-paper.png), url(../images/baniere_titre_agence_web_la_panthere.jpg);
+    background-attachment: fixed;
+
+    &::before {
+        position: absolute;
+        content: '';
+        width: 100%;
+        height: 100%;
+        background-color: rgba($color: #000000, $alpha: 0.2);
+    }
+
+    &-container {
+        z-index: 1;
+        @extend %flex-column;
+        gap: 30px;
+
+        &__logo {
+            height: 100px;
+            width: auto;
+        }
+
+        &__h1 {
+            font-size: 32px;
+            color: $main-color;
+            font-weight: 400;
+        }
+    }
+}
+
+.button__main {
+    cursor: pointer;
+    @extend %flex-center;
+    @extend %padding-inline;
+    background-color: $main-color;
+    padding: 12px 28px;
+    border: none;
+    border-radius: 40px;
+    font-size: 16px;
+    font-weight: 700;
+    color: white;
+    box-shadow: 1px 3px 4px rgb(0 0 0 / 30%);
+    transition-duration: 0.3s;
+
+    &:hover {
+        filter: brightness(120%);
+        color: black;
+    }
+}
+
+
+// about and services are in the same section, services is separated from the rest
+
+.about {
+    @extend %flex-column;
+    @extend %padding-vertical--modifier;
+    margin-inline: 200px;
+    background-color: white;
+    gap: 30px;
+
+    &-container {
+        @extend %flex-center;
+        flex-wrap: wrap;
+
+        &__h2 {
+            font-size: 24px;
+            font-weight: 600;
+            white-space: wrap;
+            color: rgb(92, 92, 92)
+        }
+    }
+    
+    &-quote {
+        margin-top: 30px;
+        background-image: url(../images/texture-paper.png);
+        background-color: rgba($color: #FFFFFF, $alpha: 0.8);
+        background-attachment: fixed;
+        @extend %flex-column;
+        padding: 5%;
+        gap: 20px;
+
+        &__p {
+            font-weight: 600;
+        }
+
+        & cite, & figcaption {
+            font-weight: 600;
+        }
+    }
+}
+
+.services {
+    @extend %flex-center;
+    gap: 30px;
+
+    &-list {
+        @extend %flex-column;
+        gap: 20px;
+
+        & i {
+            @extend %flex-center;
+            width: auto;
+            height: 60px;
+        }
+        &__icon {
+            font-size: 40px;
+            color: $main-color;
+        }
+
+        &__h3 {
+            font-size: 18px;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        &__p {
+            text-align: center;
+            font-weight: 500;
+        }
+    }
+}
+
+.value {
+    @extend .heading;
+    background-image: url(../images/texture-paper.png), url(../images/baniere_titre_agence_web_la_panthere.jpg);
+}
