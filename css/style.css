@@ -104,13 +104,13 @@ html {
 }
 .heading-container__h1 {
   font-size: 32px;
-  color: #ee6f33;
+  color: #C64A10;
   font-weight: 400;
 }
 
 .button__main {
   cursor: pointer;
-  background-color: #ee6f33;
+  background-color: #C64A10;
   padding: 12px 28px;
   border: none;
   border-radius: 40px;
@@ -170,7 +170,7 @@ html {
 }
 .services-list__icon {
   font-size: 40px;
-  color: #ee6f33;
+  color: #C64A10;
 }
 .services-list__h3 {
   font-size: 18px;
