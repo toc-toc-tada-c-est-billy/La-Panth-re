@@ -27,11 +27,15 @@ html {
 }
 
 .header {
+    z-index: 100;
+    position: sticky;
+    top: 0;
     display: flex;
     @extend %flex-around;
     align-items: center;
     height: 100px;
     background-color: white;
+    @extend %main-shadow;
 
     &__logo {
         height: 40px;
@@ -42,7 +46,7 @@ html {
     position: relative;
     @extend %flex-center;
     @extend %padding-vertical;
-    background-image: url(../images/texture-paper.png), url(../images/baniere_titre_agence_web_la_panthere.jpg);
+    background-image: url(../images/texture-paper.png), url(../images/banniere_titre_agence_web_la_panthere.jpg);
     background-attachment: fixed;
 
     &::before {
@@ -56,7 +60,7 @@ html {
     &-container {
         z-index: 1;
         @extend %flex-column;
-        gap: 30px;
+        @extend %gap;
 
         &__logo {
             height: 100px;
@@ -65,7 +69,7 @@ html {
 
         &__h1 {
             font-size: 32px;
-            color: $main-color;
+            color: white;
             font-weight: 400;
         }
     }
@@ -75,6 +79,7 @@ html {
     cursor: pointer;
     @extend %flex-center;
     @extend %padding-inline;
+    width: fit-content;
     background-color: $main-color;
     padding: 12px 28px;
     border: none;
@@ -82,88 +87,306 @@ html {
     font-size: 16px;
     font-weight: 700;
     color: white;
-    box-shadow: 1px 3px 4px rgb(0 0 0 / 30%);
+    @extend %main-shadow;
     transition-duration: 0.3s;
 
     &:hover {
-        filter: brightness(120%);
-        color: black;
+        background-color: black;
+        color: white;
+        border-radius: unset;
+        @extend %shadow--modifier;
     }
 }
-
-
-// about and services are in the same section, services is separated from the rest
 
 .about {
     @extend %flex-column;
     @extend %padding-vertical--modifier;
-    margin-inline: 200px;
+    @extend %margin-inline;
     background-color: white;
-    gap: 30px;
+    gap: 50px;
+    padding-top: 100px;
+    padding-bottom: 100px;
 
-    &-container {
+    &-intro {
         @extend %flex-center;
         flex-wrap: wrap;
 
         &__h2 {
+            text-align: center;
             font-size: 24px;
-            font-weight: 600;
-            white-space: wrap;
-            color: rgb(92, 92, 92)
+            font-weight: 500;
+            color: rgb(92, 92, 92);
         }
     }
-    
+
+    &-services {
+        @extend %flex-center;
+        @extend %gap;
+
+        &-list {
+            @extend %flex-column;
+            justify-content: flex-start;
+            @extend %gap;
+
+            & i {
+                @extend %flex-center;
+                width: auto;
+                height: 60px;
+            }
+
+            &__icon {
+                font-size: 40px;
+                color: $main-color;
+
+                &::before {
+                    content: '\e01c ';
+                }
+            }
+
+            &__h3 {
+                font-size: 18px;
+                font-weight: 600;
+                text-transform: uppercase;
+            }
+
+            &__p {
+                font-size: 14px;
+                text-align: center;
+                font-weight: 500;
+            }
+        }
+    }
+
     &-quote {
-        margin-top: 30px;
-        background-image: url(../images/texture-paper.png);
-        background-color: rgba($color: #FFFFFF, $alpha: 0.8);
-        background-attachment: fixed;
         @extend %flex-column;
-        padding: 5%;
-        gap: 20px;
-
-        &__p {
-            font-weight: 600;
-        }
-
-        & cite, & figcaption {
-            font-weight: 600;
-        }
-    }
-}
-
-.services {
-    @extend %flex-center;
-    gap: 30px;
-
-    &-list {
-        @extend %flex-column;
-        gap: 20px;
-
-        & i {
-            @extend %flex-center;
-            width: auto;
-            height: 60px;
-        }
-        &__icon {
-            font-size: 40px;
-            color: $main-color;
-        }
-
-        &__h3 {
-            font-size: 18px;
-            font-weight: 600;
-            text-transform: uppercase;
-        }
+        padding-inline: 5%;
+        @extend %gap;
 
         &__p {
             text-align: center;
-            font-weight: 500;
+            font-style: italic;
         }
     }
 }
 
 .value {
     @extend .heading;
-    background-image: url(../images/texture-paper.png), url(../images/baniere_titre_agence_web_la_panthere.jpg);
+    background-image: url(../images/texture-paper.png), url(../images/banniere_valeurs_agence_web_la_panthere.jpg);
+
+    &-container {
+        z-index: 1;
+        @extend %flex-column;
+        align-items: center;
+        gap: 50px;
+        @extend %margin-inline;
+        background: rgba(0, 0, 0, 0.7);
+        padding: 5%;
+
+        &__h2 {
+            @extend .about-intro__h2;
+            color: white;
+        }
+
+        &__p {
+            @extend .about-services-list__p;
+            color: white;
+        }
+    }
+}
+
+.case-study {
+    background-image: url(../images/banniere_cas-clients_agence_web_la_panthere.png);
+
+    &-container {
+        @extend .about;
+        @extend %margin-inline-modifier;
+        background: transparent;
+
+        &-list {
+            display: flex;
+            flex-flow: wrap;
+        }
+    }
+
+    &__h2 {
+        @extend .about-intro__h2;
+    }
+}
+
+.card {
+    @extend %flex-column;
+    gap: 15px;
+    padding: 5%;
+    width: 40%;
+
+    &__image {
+        width: 100%;
+    }
+
+    &__h3,
+    &__p {
+        text-align: center;
+    }
+
+    &__h3 {
+        @extend .about-services-list__h3;
+    }
+}
+
+.contact {
+    @extend .heading;
+
+    &::before {
+        position: absolute;
+        content: '';
+        width: 100%;
+        height: 100%;
+        background-color: rgba($color: #000000, $alpha: 0.2);
+    }
+
+    &-container {
+        @extend .heading-container;
+
+        &__h2 {
+            @extend .about-intro__h2;
+            color: white;
+        }
+    }
+}
+
+.footer {
+    @extend %flex-column;
+    padding: 5%;
+    gap: 20px;
+    background-color: $main-color;
+
+    &__h3 {
+        font-size: 16px;
+        color: white;
+    }
+
+    &-list {
+        display: flex;
+        gap: 50px;
+
+        &__icon {
+            font-size: 22px;
+            color: white;
+        }
+    }
+}
+
+// Contact page
+
+.button__home {
+    font-size: 24px;
+    color: #000000;
+    transition-duration: 0.3s;
+    padding: 10px;
+    border: solid 1px #000000;
+    @extend %main-shadow;
+
+    &:hover {
+        color: $main-color;
+        border-color: $main-color;
+        @extend %shadow--modifier;
+    }
+}
+
+.heading-secondary {
+    @extend .heading;
+    background-image: url(../images/dots-bg.png), url(../images/texture-paper.png);
+    background-color: $main-color;
+
+    &::before {
+        position: absolute;
+        content: '';
+        width: 100%;
+        height: 100%;
+        background-color: rgba($color: #000000, $alpha: 0.2);
+    }
+
+    &__p {
+        color: white;
+        font-size: 24px;
+        text-align: center;
+    }
+}
+
+.form {
+    @extend .about;
+
+    & .send {
+        padding: 5%;
+        background-color: $main-color;
+        color: white;
+        text-transform: uppercase;
+    }
+}
+
+fieldset {
+    border: solid 1px $main-color;
+    border-radius: 5px;
+    padding: 5%;
+    @extend %main-shadow;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+legend {
+    font-size: 22px;
+    color: $main-color;
+    padding: 1%;
+}
+
+input,
+textarea {
+    padding: 1%;
+    border: solid 2px black;
+    border-radius: 5px;
+}
+
+@media only screen and (max-width: 600px) {
+    .header {
+        flex-direction: column;
+        justify-content: center;
+        gap: 10px;
+
+        .button__main {
+            display: none;
+        }
+    }
+
+    .button__home {
+        padding-top: unset;
+        padding-bottom: unset;
+    }
+
+    .button__main,
+    .heading-container__h1,
+    .footer__h3 {
+        text-align: center;
+    }
+
+    .about-services {
+        flex-direction: column;
+    }
+
+    .case-study-container-list {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .card {
+        width: 80%;
+    }
+
+    .contact-container__h2 {
+        padding: 5%;
+    }
+
+    .heading-secondary {
+        padding-inline: 10%;
+    }
 }

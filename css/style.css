@@ -1,4 +1,4 @@
-.services-list i, .services, .about-container, .button__main, .heading, .value {
+.about-services-list i, .about-services, .about-intro, .button__main, .heading, .heading-secondary, .contact, .value {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -10,7 +10,7 @@
           justify-content: center;
 }
 
-.services-list, .about-quote, .about, .heading-container {
+.footer, .card, .value-container, .about-quote, .about-services-list, .about, .form, .case-study-container, .heading-container, .contact-container {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -35,14 +35,36 @@
   padding-inline: 5%;
 }
 
-.heading, .value {
+.heading, .heading-secondary, .contact, .value {
   padding-top: 100px;
   padding-bottom: 100px;
 }
 
-.about {
+.about, .form, .case-study-container {
   padding-top: 50px;
   padding-bottom: 50px;
+}
+
+.value-container, .about, .form, .case-study-container {
+  margin-inline: 10%;
+}
+
+.case-study-container {
+  margin-inline: 20%;
+}
+
+.about-quote, .about-services-list, .about-services, .heading-container, .contact-container {
+  gap: 30px;
+}
+
+fieldset, .button__home, .button__main, .header {
+  -webkit-box-shadow: 1px 3px 4px rgba(0, 0, 0, 0.3);
+          box-shadow: 1px 3px 4px rgba(0, 0, 0, 0.3);
+}
+
+.button__home:hover, .button__main:hover {
+  -webkit-box-shadow: 2px 1px 10px rgba(0, 0, 0, 0.3);
+          box-shadow: 2px 1px 10px rgba(0, 0, 0, 0.3);
 }
 
 * {
@@ -69,6 +91,9 @@ html {
   }
 }
 .header {
+  z-index: 100;
+  position: sticky;
+  top: 0;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -82,21 +107,20 @@ html {
   height: 40px;
 }
 
-.heading, .value {
+.heading, .heading-secondary, .contact, .value {
   position: relative;
-  background-image: url(../images/texture-paper.png), url(../images/baniere_titre_agence_web_la_panthere.jpg);
+  background-image: url(../images/texture-paper.png), url(../images/banniere_titre_agence_web_la_panthere.jpg);
   background-attachment: fixed;
 }
-.heading::before, .value::before {
+.heading::before, .heading-secondary::before, .contact::before, .value::before {
   position: absolute;
   content: "";
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.2);
 }
-.heading-container {
+.heading-container, .contact-container {
   z-index: 1;
-  gap: 30px;
 }
 .heading-container__logo {
   height: 100px;
@@ -104,12 +128,15 @@ html {
 }
 .heading-container__h1 {
   font-size: 32px;
-  color: #C64A10;
+  color: white;
   font-weight: 400;
 }
 
 .button__main {
   cursor: pointer;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
   background-color: #C64A10;
   padding: 12px 28px;
   border: none;
@@ -117,71 +144,248 @@ html {
   font-size: 16px;
   font-weight: 700;
   color: white;
-  -webkit-box-shadow: 1px 3px 4px rgba(0, 0, 0, 0.3);
-          box-shadow: 1px 3px 4px rgba(0, 0, 0, 0.3);
   -webkit-transition-duration: 0.3s;
           transition-duration: 0.3s;
 }
 .button__main:hover {
-  -webkit-filter: brightness(120%);
-          filter: brightness(120%);
-  color: black;
+  background-color: black;
+  color: white;
+  border-radius: unset;
 }
 
-.about {
-  margin-inline: 200px;
+.about, .form, .case-study-container {
   background-color: white;
-  gap: 30px;
+  gap: 50px;
+  padding-top: 100px;
+  padding-bottom: 100px;
 }
-.about-container {
+.about-intro {
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
 }
-.about-container__h2 {
+.about-intro__h2, .contact-container__h2, .case-study__h2, .value-container__h2 {
+  text-align: center;
   font-size: 24px;
-  font-weight: 600;
-  white-space: wrap;
+  font-weight: 500;
   color: rgb(92, 92, 92);
 }
-.about-quote {
-  margin-top: 30px;
-  background-image: url(../images/texture-paper.png);
-  background-color: rgba(255, 255, 255, 0.8);
-  background-attachment: fixed;
-  padding: 5%;
-  gap: 20px;
+.about-services-list {
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
 }
-.about-quote__p {
-  font-weight: 600;
-}
-.about-quote cite, .about-quote figcaption {
-  font-weight: 600;
-}
-
-.services {
-  gap: 30px;
-}
-.services-list {
-  gap: 20px;
-}
-.services-list i {
+.about-services-list i {
   width: auto;
   height: 60px;
 }
-.services-list__icon {
+.about-services-list__icon {
   font-size: 40px;
   color: #C64A10;
 }
-.services-list__h3 {
+.about-services-list__icon::before {
+  content: "\e01c";
+}
+.about-services-list__h3, .card__h3 {
   font-size: 18px;
   font-weight: 600;
   text-transform: uppercase;
 }
-.services-list__p {
+.about-services-list__p, .value-container__p {
+  font-size: 14px;
   text-align: center;
   font-weight: 500;
 }
+.about-quote {
+  padding-inline: 5%;
+}
+.about-quote__p {
+  text-align: center;
+  font-style: italic;
+}
 
 .value {
-  background-image: url(../images/texture-paper.png), url(../images/baniere_titre_agence_web_la_panthere.jpg);
+  background-image: url(../images/texture-paper.png), url(../images/banniere_valeurs_agence_web_la_panthere.jpg);
+}
+.value-container {
+  z-index: 1;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 50px;
+  background: rgba(0, 0, 0, 0.7);
+  padding: 5%;
+}
+.value-container__h2 {
+  color: white;
+}
+.value-container__p {
+  color: white;
+}
+
+.case-study {
+  background-image: url(../images/banniere_cas-clients_agence_web_la_panthere.png);
+}
+.case-study-container {
+  background: transparent;
+}
+.case-study-container-list {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-flow: wrap;
+      flex-flow: wrap;
+}
+.card {
+  gap: 15px;
+  padding: 5%;
+  width: 40%;
+}
+.card__image {
+  width: 100%;
+}
+.card__h3, .card__p {
+  text-align: center;
+}
+.contact::before {
+  position: absolute;
+  content: "";
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.2);
+}
+.contact-container__h2 {
+  color: white;
+}
+
+.footer {
+  padding: 5%;
+  gap: 20px;
+  background-color: #C64A10;
+}
+.footer__h3 {
+  font-size: 16px;
+  color: white;
+}
+.footer-list {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 50px;
+}
+.footer-list__icon {
+  font-size: 22px;
+  color: white;
+}
+
+.button__home {
+  font-size: 24px;
+  color: #000000;
+  -webkit-transition-duration: 0.3s;
+          transition-duration: 0.3s;
+  padding: 10px;
+  border: solid 1px #000000;
+}
+.button__home:hover {
+  color: #C64A10;
+  border-color: #C64A10;
+}
+
+.heading-secondary {
+  background-image: url(../images/dots-bg.png), url(../images/texture-paper.png);
+  background-color: #C64A10;
+}
+.heading-secondary::before {
+  position: absolute;
+  content: "";
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.2);
+}
+.heading-secondary__p {
+  color: white;
+  font-size: 24px;
+  text-align: center;
+}
+
+.form .send {
+  padding: 5%;
+  background-color: #C64A10;
+  color: white;
+  text-transform: uppercase;
+}
+
+fieldset {
+  border: solid 1px #C64A10;
+  border-radius: 5px;
+  padding: 5%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 10px;
+}
+
+legend {
+  font-size: 22px;
+  color: #C64A10;
+  padding: 1%;
+}
+
+input,
+textarea {
+  padding: 1%;
+  border: solid 2px black;
+  border-radius: 5px;
+}
+
+@media only screen and (max-width: 600px) {
+  .header {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    gap: 10px;
+  }
+  .header .button__main {
+    display: none;
+  }
+  .button__home {
+    padding-top: unset;
+    padding-bottom: unset;
+  }
+  .button__main,
+.heading-container__h1,
+.footer__h3 {
+    text-align: center;
+  }
+  .about-services {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  .case-study-container-list {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+  .card {
+    width: 80%;
+  }
+  .contact-container__h2 {
+    padding: 5%;
+  }
+  .heading-secondary {
+    padding-inline: 10%;
+  }
 }/*# sourceMappingURL=style.css.map */
